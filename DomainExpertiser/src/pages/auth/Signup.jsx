@@ -744,120 +744,118 @@ function Signup() {
               </div>
             </div>
           )}
-          {state == 2 &&
-            selectedOccupation != "Client" &&
-            selectedOccupation != "Student" && (
-              <section>
-                <div className="mt-4">
-                  <label
-                    htmlFor="SCname"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Linkedin Link
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      id="lin"
-                      name="lin"
-                      type="lin"
-                      value={lin}
-                      onChange={(event) => setLin(event.target.value)}
-                      autoComplete="lin"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
+          {state == 2 && selectedOccupation != "Client" && type != "School" && (
+            <section>
+              <div className="mt-4">
+                <label
+                  htmlFor="SCname"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Linkedin Link
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="lin"
+                    name="lin"
+                    type="lin"
+                    value={lin}
+                    onChange={(event) => setLin(event.target.value)}
+                    autoComplete="lin"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
                 </div>
-                {selectedOccupation != "Company" && (
-                  <section>
-                    <div className="mt-4">
-                      <label
-                        htmlFor="SCname"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Github Link
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="git"
-                          name="git"
-                          type="git"
-                          value={git}
-                          onChange={(event) => setGit(event.target.value)}
-                          autoComplete="git"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                      </div>
+              </div>
+              {selectedOccupation != "Company" && (
+                <section>
+                  <div className="mt-4">
+                    <label
+                      htmlFor="SCname"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Github Link
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="git"
+                        name="git"
+                        type="git"
+                        value={git}
+                        onChange={(event) => setGit(event.target.value)}
+                        autoComplete="git"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
                     </div>
-                    <div className="mt-4">
-                      <label
-                        htmlFor="SCname"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Location
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="Location"
-                          name="Location"
-                          type="Location"
-                          value={location}
-                          onChange={(event) => setLocation(event.target.value)}
-                          autoComplete="loc"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                      </div>
+                  </div>
+                  <div className="mt-4">
+                    <label
+                      htmlFor="SCname"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Location
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="Location"
+                        name="Location"
+                        type="Location"
+                        value={location}
+                        onChange={(event) => setLocation(event.target.value)}
+                        autoComplete="loc"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
                     </div>
-                    <div className="mt-4">
-                      <label
-                        htmlFor="Occupation"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                  </div>
+                  <div className="mt-4">
+                    <label
+                      htmlFor="Occupation"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      What are you upto?
+                    </label>
+                    <div className="mt-2">
+                      <select
+                        id="Type"
+                        name="Type"
+                        autoComplete="Institution-type"
+                        value={wayu}
+                        onChange={wayufun}
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                       >
-                        What are you upto?
-                      </label>
-                      <div className="mt-2">
-                        <select
-                          id="Type"
-                          name="Type"
-                          autoComplete="Institution-type"
-                          value={wayu}
-                          onChange={wayufun}
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                        <option value="Job">Job</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Project">Project</option>
+                      </select>
+                    </div>
+                  </div>
+                  <fieldset className="mt-4">
+                    <legend className="block text-sm font-medium leading-6 text-gray-900">
+                      Choose your field of Interests
+                    </legend>
+                    <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 items-center justify-around">
+                      {Interests.map((interest) => (
+                        <div
+                          className="relative flex gap-x-3 items-center"
+                          key={interest}
                         >
-                          <option value="Job">Job</option>
-                          <option value="Internship">Internship</option>
-                          <option value="Project">Project</option>
-                        </select>
-                      </div>
+                          <input
+                            id={interest}
+                            name={interest}
+                            type="checkbox"
+                            checked={selectedInterests.includes(interest)}
+                            onChange={() => handleInterestChange(interest)}
+                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                          />
+                          <p className="text-sm leading-6 font-normal text-gray-900">
+                            {interest}
+                          </p>
+                        </div>
+                      ))}
                     </div>
-                    <fieldset className="mt-4">
-                      <legend className="block text-sm font-medium leading-6 text-gray-900">
-                        Choose your field of Interests
-                      </legend>
-                      <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 items-center justify-around">
-                        {Interests.map((interest) => (
-                          <div
-                            className="relative flex gap-x-3 items-center"
-                            key={interest}
-                          >
-                            <input
-                              id={interest}
-                              name={interest}
-                              type="checkbox"
-                              checked={selectedInterests.includes(interest)}
-                              onChange={() => handleInterestChange(interest)}
-                              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                            />
-                            <p className="text-sm leading-6 font-normal text-gray-900">
-                              {interest}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </fieldset>
-                  </section>
-                )}
-              </section>
-            )}
+                  </fieldset>
+                </section>
+              )}
+            </section>
+          )}
           <div className="my-6 flex justify-between">
             {state != 0 && (
               <button
