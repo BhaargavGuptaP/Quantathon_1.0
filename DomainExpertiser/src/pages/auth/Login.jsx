@@ -47,9 +47,9 @@ function Login() {
                         alt="Your Company"
                     />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        Welcome to <span className='text-transparent bg-clip-text bg-gradient-to-br from-teal-300 to-green-400'>Decoder</span>
+                        Welcome to <span className='text-transparent bg-clip-text bg-gradient-to-br from-teal-300 to-green-400'>Domain Expertiser</span>
                     </h2>
-                    <h5 className="mt-2 text-center text-base font-bold leading-9 tracking-tight text-gray-700">Your AI-Powered Web App Development Platform!</h5>
+                    <h5 className="mt-2 text-center text-base font-bold leading-9 tracking-tight text-gray-700">Unlock Expertise, Collaborate, Transform</h5>
                 </div>
 
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -108,6 +108,7 @@ function Login() {
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Dont have an account ?{'  '}
                         <Link to={'/Signup'} >
+
                             <span className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                                 Signup
                             </span>
