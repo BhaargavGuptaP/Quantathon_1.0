@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import SidebarLinkGroup from './SidebarLinkGroup';
 
-function Sidebar({ sidebarOpen, setSidebarOpen }) {
+function Sidebar({ sidebarOpen, setSidebarOpen, role }) {
   const location = useLocation();
   const { pathname } = location;
 
@@ -66,7 +66,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             <div className="flex flex-row justify-between items-center gap-3">
               <img src={logo} className='w-10 h-10' />
               <span className="text-lg text-white font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                Decoder
+                Domain Expertiser
               </span>
             </div>
           </NavLink>
@@ -118,34 +118,34 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6" aria-hidden="true">
                 •••
               </span>
-              <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Build by</span>
+              <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">{role == "Company" ? "Post" : "Build"}</span>
             </h3>
             <ul className="mt-1">
               {/* Component */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('Component') && 'bg-slate-900'}`}>
+              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes(role == "Student" ? "PersonalTrack" : "Project") && 'bg-slate-900'}`}>
                 <NavLink
                   end
-                  to="/Component"
-                  className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('Component') ? 'hover:text-slate-200' : 'hover:text-white'
+                  to={role == "Student" ? "/PersonalTrack" : "/Project"}
+                  className={`block text-slate-200 truncate transition duration-150 ${pathname.includes(role == "Student" ? "/PersonalTrack" : "/Project") ? 'hover:text-slate-200' : 'hover:text-white'
                     }`}
                 >
                   <div className="flex items-center">
                     <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
-                        className={`fill-current ${pathname.includes('Component') ? 'text-indigo-300' : 'text-slate-400'}`}
+                        className={`fill-current ${pathname.includes(role == "Student" ? "PersonalTrack" : "Project") ? 'text-indigo-300' : 'text-slate-400'}`}
                         d="M13 15l11-7L11.504.136a1 1 0 00-1.019.007L0 7l13 8z"
                       />
                       <path
-                        className={`fill-current ${pathname.includes('Component') ? 'text-indigo-600' : 'text-slate-700'}`}
+                        className={`fill-current ${pathname.includes(role == "Student" ? "PersonalTrack" : "Project") ? 'text-indigo-600' : 'text-slate-700'}`}
                         d="M13 15L0 7v9c0 .355.189.685.496.864L13 24v-9z"
                       />
                       <path
-                        className={`fill-current ${pathname.includes('Component') ? 'text-indigo-500' : 'text-slate-600'}`}
+                        className={`fill-current ${pathname.includes(role == "Student" ? "PersonalTrack" : "Project") ? 'text-indigo-500' : 'text-slate-600'}`}
                         d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z"
                       />
                     </svg>
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Component
+                      {role == "Student" ? "PersonalTrack" : "Project"}
                     </span>
                   </div>
                 </NavLink>
@@ -153,103 +153,193 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
               {/* Speach */}
 
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('Speach') && 'bg-slate-900'}`}>
+              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes(role == "Student" ? "Learn" : "Developers") && 'bg-slate-900'}`}>
                 <NavLink
                   end
-                  to="/Speech"
-                  className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('Speach') ? 'hover:text-slate-200' : 'hover:text-white'
+                  to={role == "Student" ? "/Learn" : "/Developers"}
+                  className={`block text-slate-200 truncate transition duration-150 ${pathname.includes(role == "Student" ? "Learn" : "Developers") ? 'hover:text-slate-200' : 'hover:text-white'
                     }`}
                 >
                   <div className="flex items-center">
                     <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
-                        className={`fill-current ${pathname.includes('Speach') ? 'text-indigo-600' : 'text-slate-700'}`}
+                        className={`fill-current ${pathname.includes(role == "Student" ? "Learn" : "Developers") ? 'text-indigo-600' : 'text-slate-700'}`}
                         d="M4.418 19.612A9.092 9.092 0 0 1 2.59 17.03L.475 19.14c-.848.85-.536 2.395.743 3.673a4.413 4.413 0 0 0 1.677 1.082c.253.086.519.131.787.135.45.011.886-.16 1.208-.474L7 21.44a8.962 8.962 0 0 1-2.582-1.828Z"
                       />
                       <path
-                        className={`fill-current ${pathname.includes('Speach') ? 'text-indigo-500' : 'text-slate-600'}`}
+                        className={`fill-current ${pathname.includes(role == "Student" ? "Learn" : "Developers") ? 'text-indigo-500' : 'text-slate-600'}`}
                         d="M10.034 13.997a11.011 11.011 0 0 1-2.551-3.862L4.595 13.02a2.513 2.513 0 0 0-.4 2.645 6.668 6.668 0 0 0 1.64 2.532 5.525 5.525 0 0 0 3.643 1.824 2.1 2.1 0 0 0 1.534-.587l2.883-2.882a11.156 11.156 0 0 1-3.861-2.556Z"
                       />
                       <path
-                        className={`fill-current ${pathname.includes('Speach') ? 'text-indigo-300' : 'text-slate-400'}`}
+                        className={`fill-current ${pathname.includes(role == "Student" ? "Learn" : "Developers") ? 'text-indigo-300' : 'text-slate-400'}`}
                         d="M21.554 2.471A8.958 8.958 0 0 0 18.167.276a3.105 3.105 0 0 0-3.295.467L9.715 5.888c-1.41 1.408-.665 4.275 1.733 6.668a8.958 8.958 0 0 0 3.387 2.196c.459.157.94.24 1.425.246a2.559 2.559 0 0 0 1.87-.715l5.156-5.146c1.415-1.406.666-4.273-1.732-6.666Zm.318 5.257c-.148.147-.594.2-1.256-.018A7.037 7.037 0 0 1 18.016 6c-1.73-1.728-2.104-3.475-1.73-3.845a.671.671 0 0 1 .465-.129c.27.008.536.057.79.146a7.07 7.07 0 0 1 2.6 1.711c1.73 1.73 2.105 3.472 1.73 3.846Z"
                       />
                     </svg>
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Speech
+                      {role == "Student" ? "Learn" : "Developers"}
                     </span>
                   </div>
                 </NavLink>
               </li>
 
               {/* Image */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('Image') && 'bg-slate-900'}`}>
+              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes(role == "Student" ? "Develop" : "Request") && 'bg-slate-900'}`}>
                 <NavLink
                   end
-                  to="/Image"
-                  className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('Image') ? 'hover:text-slate-200' : 'hover:text-white'
+                  to={role == "Student" ? "/Develop" : "/Request"}
+                  className={`block text-slate-200 truncate transition duration-150 ${pathname.includes(role == "Student" ? "Develop" : "Request") ? 'hover:text-slate-200' : 'hover:text-white'
                     }`}
                 >
                   <div className="flex items-center">
                     <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
-                        className={`fill-current ${pathname.includes('Image') ? 'text-indigo-500' : 'text-slate-600'}`}
+                        className={`fill-current ${pathname.includes(role == "Student" ? "Develop" : "Request") ? 'text-indigo-500' : 'text-slate-600'}`}
                         d="M20 7a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 0120 7zM4 23a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 014 23z"
                       />
                       <path
-                        className={`fill-current ${pathname.includes('Image') ? 'text-indigo-300' : 'text-slate-400'}`}
+                        className={`fill-current ${pathname.includes(role == "Student" ? "Develop" : "Request") ? 'text-indigo-300' : 'text-slate-400'}`}
                         d="M17 23a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 010-2 4 4 0 004-4 1 1 0 012 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1zM7 13a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 110-2 4 4 0 004-4 1 1 0 112 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1z"
                       />
                     </svg>
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Image
+                      {role == "Student" ? "Develop" : "Request"}
                     </span>
                   </div>
                 </NavLink>
               </li>
 
 
-              {/* Template */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('Template') && 'bg-slate-900'}`}>
-                <NavLink
-                  end
-                  to="/Template"
-                  className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('Template') ? 'hover:text-slate-200' : 'hover:text-white'
-                    }`}
-                >
-                  <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <circle
-                        className={`fill-current ${pathname.includes('Template') ? 'text-indigo-300' : 'text-slate-400'}`}
-                        cx="18.5"
-                        cy="5.5"
-                        r="4.5"
-                      />
-                      <circle
-                        className={`fill-current ${pathname.includes('Template') ? 'text-indigo-500' : 'text-slate-600'}`}
-                        cx="5.5"
-                        cy="5.5"
-                        r="4.5"
-                      />
-                      <circle
-                        className={`fill-current ${pathname.includes('Template') ? 'text-indigo-500' : 'text-slate-600'}`}
-                        cx="18.5"
-                        cy="18.5"
-                        r="4.5"
-                      />
-                      <circle
-                        className={`fill-current ${pathname.includes('Template') ? 'text-indigo-300' : 'text-slate-400'}`}
-                        cx="5.5"
-                        cy="18.5"
-                        r="4.5"
-                      />
-                    </svg>
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Template
-                    </span>
-                  </div>
-                </NavLink>
-              </li>
+              {/* Publish */}
+              {role == "Student" &&
+                <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('Publish') && 'bg-slate-900'}`}>
+                  <NavLink
+                    end
+                    to="/Publish"
+                    className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('Publish') ? 'hover:text-slate-200' : 'hover:text-white'
+                      }`}
+                  >
+                    <div className="flex items-center">
+                      <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                        <circle
+                          className={`fill-current ${pathname.includes('Publish') ? 'text-indigo-300' : 'text-slate-400'}`}
+                          cx="18.5"
+                          cy="5.5"
+                          r="4.5"
+                        />
+                        <circle
+                          className={`fill-current ${pathname.includes('Publish') ? 'text-indigo-500' : 'text-slate-600'}`}
+                          cx="5.5"
+                          cy="5.5"
+                          r="4.5"
+                        />
+                        <circle
+                          className={`fill-current ${pathname.includes('Publish') ? 'text-indigo-500' : 'text-slate-600'}`}
+                          cx="18.5"
+                          cy="18.5"
+                          r="4.5"
+                        />
+                        <circle
+                          className={`fill-current ${pathname.includes('Publish') ? 'text-indigo-300' : 'text-slate-400'}`}
+                          cx="5.5"
+                          cy="18.5"
+                          r="4.5"
+                        />
+                      </svg>
+                      <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Publish
+                      </span>
+                    </div>
+                  </NavLink>
+                </li>
+              }
+
+              {/* Publish */}
+              {role == "Company" &&
+                <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('Intern') && 'bg-slate-900'}`}>
+                  <NavLink
+                    end
+                    to="/Intern"
+                    className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('Intern') ? 'hover:text-slate-200' : 'hover:text-white'
+                      }`}
+                  >
+                    <div className="flex items-center">
+                      <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                        <circle
+                          className={`fill-current ${pathname.includes('Intern') ? 'text-indigo-300' : 'text-slate-400'}`}
+                          cx="18.5"
+                          cy="5.5"
+                          r="4.5"
+                        />
+                        <circle
+                          className={`fill-current ${pathname.includes('Intern') ? 'text-indigo-500' : 'text-slate-600'}`}
+                          cx="5.5"
+                          cy="5.5"
+                          r="4.5"
+                        />
+                        <circle
+                          className={`fill-current ${pathname.includes('Intern') ? 'text-indigo-500' : 'text-slate-600'}`}
+                          cx="18.5"
+                          cy="18.5"
+                          r="4.5"
+                        />
+                        <circle
+                          className={`fill-current ${pathname.includes('Intern') ? 'text-indigo-300' : 'text-slate-400'}`}
+                          cx="5.5"
+                          cy="18.5"
+                          r="4.5"
+                        />
+                      </svg>
+                      <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Intern
+                      </span>
+                    </div>
+                  </NavLink>
+                </li>
+              }
+
+              {/* Publish */}
+              {role == "Company" &&
+                <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('Job') && 'bg-slate-900'}`}>
+                  <NavLink
+                    end
+                    to="/Job"
+                    className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('Job') ? 'hover:text-slate-200' : 'hover:text-white'
+                      }`}
+                  >
+                    <div className="flex items-center">
+                      <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                        <circle
+                          className={`fill-current ${pathname.includes('Job') ? 'text-indigo-300' : 'text-slate-400'}`}
+                          cx="18.5"
+                          cy="5.5"
+                          r="4.5"
+                        />
+                        <circle
+                          className={`fill-current ${pathname.includes('Job') ? 'text-indigo-500' : 'text-slate-600'}`}
+                          cx="5.5"
+                          cy="5.5"
+                          r="4.5"
+                        />
+                        <circle
+                          className={`fill-current ${pathname.includes('Job') ? 'text-indigo-500' : 'text-slate-600'}`}
+                          cx="18.5"
+                          cy="18.5"
+                          r="4.5"
+                        />
+                        <circle
+                          className={`fill-current ${pathname.includes('Job') ? 'text-indigo-300' : 'text-slate-400'}`}
+                          cx="5.5"
+                          cy="18.5"
+                          r="4.5"
+                        />
+                      </svg>
+                      <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Job
+                      </span>
+                    </div>
+                  </NavLink>
+                </li>
+              }
             </ul>
           </div>
 
@@ -318,70 +408,36 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 </NavLink>
               </li>
               {/* Track */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('Track') && 'bg-slate-900'}`}>
-                <NavLink
-                  end
-                  to="/Track"
-                  className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('Track') ? 'hover:text-slate-200' : 'hover:text-white'
-                    }`}
-                >
-                  <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current ${pathname.includes('Track') ? 'text-indigo-500' : 'text-slate-600'}`}
-                        d="M8 1v2H3v19h18V3h-5V1h7v23H1V1z"
-                      />
-                      <path
-                        className={`fill-current ${pathname.includes('Track') ? 'text-indigo-500' : 'text-slate-600'}`}
-                        d="M1 1h22v23H1z"
-                      />
-                      <path
-                        className={`fill-current ${pathname.includes('Track') ? 'text-indigo-300' : 'text-slate-400'}`}
-                        d="M15 10.586L16.414 12 11 17.414 7.586 14 9 12.586l2 2zM5 0h14v4H5z"
-                      />
-                    </svg>
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Track
-                    </span>
-                  </div>
-                </NavLink>
-              </li>
-
-
-
-
-              {/* Group Chat */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('GroupChat') && 'bg-slate-900'}`}>
-                <NavLink
-                  end
-                  to="/GroupChat"
-                  className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('GroupChat') ? 'hover:text-slate-200' : 'hover:text-white'
-                    }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="grow flex items-center">
+              {!(role == "Student") &&
+                <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('Track') && 'bg-slate-900'}`}>
+                  <NavLink
+                    end
+                    to="/Track"
+                    className={`block text-slate-200 truncate transition duration-150 ${pathname.includes('Track') ? 'hover:text-slate-200' : 'hover:text-white'
+                      }`}
+                  >
+                    <div className="flex items-center">
                       <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                         <path
-                          className={`fill-current ${pathname.includes('GroupChat') ? 'text-indigo-500' : 'text-slate-600'}`}
-                          d="M14.5 7c4.695 0 8.5 3.184 8.5 7.111 0 1.597-.638 3.067-1.7 4.253V23l-4.108-2.148a10 10 0 01-2.692.37c-4.695 0-8.5-3.184-8.5-7.11C6 10.183 9.805 7 14.5 7z"
+                          className={`fill-current ${pathname.includes('Track') ? 'text-indigo-500' : 'text-slate-600'}`}
+                          d="M8 1v2H3v19h18V3h-5V1h7v23H1V1z"
                         />
                         <path
-                          className={`fill-current ${pathname.includes('GroupChat') ? 'text-indigo-300' : 'text-slate-400'}`}
-                          d="M11 1C5.477 1 1 4.582 1 9c0 1.797.75 3.45 2 4.785V19l4.833-2.416C8.829 16.85 9.892 17 11 17c5.523 0 10-3.582 10-8s-4.477-8-10-8z"
+                          className={`fill-current ${pathname.includes('Track') ? 'text-indigo-500' : 'text-slate-600'}`}
+                          d="M1 1h22v23H1z"
+                        />
+                        <path
+                          className={`fill-current ${pathname.includes('Track') ? 'text-indigo-300' : 'text-slate-400'}`}
+                          d="M15 10.586L16.414 12 11 17.414 7.586 14 9 12.586l2 2zM5 0h14v4H5z"
                         />
                       </svg>
                       <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                        Group Chat
+                        Track
                       </span>
                     </div>
-                    {/* Badge */}
-                    <div className="flex flex-shrink-0 ml-2">
-                      <span className="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-indigo-500 px-2 rounded">4</span>
-                    </div>
-                  </div>
-                </NavLink>
-              </li>
-
+                  </NavLink>
+                </li>
+              }
             </ul>
           </div>
           {/* More group */}
@@ -442,32 +498,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               </span>
                             </NavLink>
                           </li>
-                          <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/Settings/ServingPorts"
-                              className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
-                              }
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Serving ports
-                              </span>
-                            </NavLink>
-                          </li>
-                          <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/Settings/ConnectedDevices"
-                              className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
-                              }
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Connected Devices
-                              </span>
-                            </NavLink>
-                          </li>
+
                           <li className="mb-1 last:mb-0">
                             <NavLink
                               end
