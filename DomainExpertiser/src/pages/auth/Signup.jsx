@@ -362,7 +362,7 @@ function Signup() {
                     <option value="School">School</option>
                   </select>
                 </div>
-                {(type == "College" || type == "University") && (
+                {type == "College" && (
                   <div>
                     <div className="mt-4">
                       <label
